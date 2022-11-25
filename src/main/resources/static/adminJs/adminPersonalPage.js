@@ -1,20 +1,22 @@
-const url='/api/user-page'
+const url='/api/admin/personalPage'
 
- async function getUserPage () {
-     let page = await fetch(url)
+async function getUserPage () {
+    let page = await fetch(url)
 
-     if (page.ok) {
-         let user = await page.json();
-         getInformationAboutUser(user)
-     }
- }
+    if (page.ok) {
+        let user = await page.json();
+        getInformationAboutUser(user);
+    } else {
+        alert(`Error, ${page.status}`);
+    }
+}
 
 function getInformationAboutUser(user) {
     let tr = document.createElement("tr")
-let roles = ""
+    let roles = []
 
     for (let role of user.roles) {
-        roles = role + " "
+        roles.push(" " + role.roleName.toString().replaceAll('ROLE_', ''))
     }
 
     tr.innerHTML=
@@ -27,7 +29,6 @@ let roles = ""
             <td>${roles}</td>
         </tr>`
     document.getElementById(`tbody`).append(tr);
-
 }
 
 getUserPage();

@@ -69,15 +69,8 @@
                             <th>Email</th>
                             <th>Role</th>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td th:text="${admin.getId()}">user</td>
-                                <td th:text="${admin.getFirstName()}">user</td>
-                                <td th:text="${admin.getLastName()}">user</td>
-                                <td th:text="${admin.getAge()}">user</td>
-                                <td th:text="${admin.getUsername()}">user</td>
-                                <td th:text="${role}">user</td>
-                            </tr>
+                            <tbody id="tbody">
+
                             </tbody>
                         </div>
                     </table>
@@ -88,10 +81,11 @@
 </div>
 <br/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+<script th:src="@{/adminJs/adminPersonalPage.js}"></script>
+
 </body>
 </html>
