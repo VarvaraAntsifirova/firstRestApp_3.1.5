@@ -1,31 +1,43 @@
 let span2 = document.getElementsByClassName("close")[2];
 let span3 = document.getElementsByClassName("close")[3];
+const deleteModal = document.getElementById("deleteModal")
+
+function deleteModalPage(id) {
+    deleteModal.style.display = "block";
+    deleteModalData(id)
+}
 
 span2.onclick = function () {
-    editModal.style.display = "none";
+    deleteModal.style.display = "none";
 }
 
 span3.onclick = function () {
-    editModal.style.display = "none";
+    deleteModal.style.display = "none";
 }
 
-const idDeleteField = document.getElementById('delete-id');
-const fistNameDeleteField = document.getElementById('delete-firstName');
-const lastNameDeleteField = document.getElementById('delete-lastName');
-const ageDeleteField = document.getElementById('delete-age');
-const loginDeleteField = document.getElementById('delete-username');
+window.onclick = function (event) {
+    if (event.target == deleteModal) {
+        deleteModal.style.display = "none";
+    }
+}
 
-async function deleteFormFill(id) {
+const id_del = document.getElementById('id_del');
+const fistName = document.getElementById('First name_del');
+const lastName = document.getElementById('Last name_del');
+const age = document.getElementById('age_del');
+const email = document.getElementById('email_del');
+
+async function deleteModalData(id) {
     const userByIdURL = '/api/admin/users/' + id;
     let userResponse = await fetch(userByIdURL);
     if (userResponse.ok) {
         let userJSONData =
             await userResponse.json().then(user => {
-                idDeleteField.value = `${user.id}`;
-                fistNameDeleteField.value = `${user.firstName}`;
-                lastNameDeleteField.value = `${user.lastName}`;
-                ageDeleteField.value = `${user.age}`;
-                loginDeleteField.value = `${user.username}`;
+                id_del.value = `${user.id}`;
+                fistName.value = `${user.firstName}`;
+                lastName.value = `${user.lastName}`;
+                age.value = `${user.age}`;
+                email.value = `${user.username}`;
 
             })
 
@@ -35,7 +47,7 @@ async function deleteFormFill(id) {
 }
 
 async function deleteUser() {
-    let url = '/api/admin/users/' + idDeleteField.value + '/delete'
+    let url = '/api/admin/users/' + id_del.value + '/delete'
 
     let method = {
         method: 'DELETE',
@@ -45,7 +57,7 @@ async function deleteUser() {
     }
 
     await fetch(url, method).then(() => {
-        $('#closeBtn').click();
+        $('#deleteBtn').click();
         getAdminGeneralPage();
     })
 }

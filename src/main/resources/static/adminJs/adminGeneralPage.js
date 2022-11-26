@@ -28,14 +28,16 @@ function loadTableData(listOfUsers) {
             <td>${user.username}</td>
             <td>${roles}</td>
             <td>
-                <button id="editModalButton" class="btn btn-primary" onclick="editModalPage()">
+                <button class="btn btn-primary" data-bs-toggle="modal" 
+                           data-bs-target="#editModal"
+                           onclick="editModalData(${user.id})">
                     Edit
                 </button>
             </td>
             <td>
                 <button class="btn btn-danger" data-bs-toggle="modal" 
                            data-bs-target="#deleteModal"
-                           onclick="deleteFormFill(${user.id})">
+                           onclick="deleteModalPage(${user.id})">
                     Delete
                 </button>
             </td>
