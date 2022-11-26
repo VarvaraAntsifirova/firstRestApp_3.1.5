@@ -54,7 +54,7 @@ public class AdminRestController {
     }
 
     @GetMapping("/roles")
-    public ResponseEntity<List<Role>> getAllRoles() {
+    public ResponseEntity<?> getAllRoles() {
         return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
     }
 

@@ -95,7 +95,8 @@
 
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Edit User</h4>
-                                                <span class="close">&times;</span>
+                                                <span class="btn-close" data-bs-dismiss="modal"
+                                                      aria-label="Close"></span>
                                             </div>
 
                                             <div class="modal-body col-md text-center">
@@ -151,10 +152,11 @@
 
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary close" data-dismiss="modal"
+                                                        id="editCloseBtn"
                                                         type="button">Close
                                                 </button>
                                                 <button class="btn btn-primary" id="editBtn"
-                                                        type="button" onclick="editUser()">
+                                                        type="button" onclick="editUser(); getAdminGeneralPage();">
                                                     Edit
                                                 </button>
                                             </div>
@@ -167,14 +169,15 @@
 
                         <!--Модальное окно для удаления-->
 
-                        <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                        <div class="modal" id="deleteModal" >
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <form class="text-center" id="deletingForm">
 
                                         <div class="modal-header">
                                             <h4 class="modal-title">Delete User</h4>
-                                            <span class="close">&times;</span>
+                                            <span class="btn-close" data-bs-dismiss="modal"
+                                                  aria-label="Close"></span>
                                         </div>
 
                                         <div class="modal-body col-md text-center">
@@ -227,10 +230,10 @@
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary close" data-dismiss="modal" id="closeBtn"
+                                            <button class="btn btn-secondary close" data-dismiss="modal" id="deleteCloseBtn"
                                                     type="button">Close
                                             </button>
-                                            <button class="btn btn-danger" data-dismiss="modal" id="deleteBtn"
+                                            <button class="btn btn-danger" id="deleteBtn"
                                                     type="button" onclick="deleteUser()">
                                                 Delete
                                             </button>
@@ -244,8 +247,8 @@
 
                         </tr>
                         </tbody>
+                    </table>
                 </div>
-                </table>
                 <!--Table of users-->
             </div>
         </div>

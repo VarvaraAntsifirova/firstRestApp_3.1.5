@@ -1,26 +1,3 @@
-let span2 = document.getElementsByClassName("close")[2];
-let span3 = document.getElementsByClassName("close")[3];
-const deleteModal = document.getElementById("deleteModal")
-
-function deleteModalPage(id) {
-    deleteModal.style.display = "block";
-    deleteModalData(id)
-}
-
-span2.onclick = function () {
-    deleteModal.style.display = "none";
-}
-
-span3.onclick = function () {
-    deleteModal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == deleteModal) {
-        deleteModal.style.display = "none";
-    }
-}
-
 const id_del = document.getElementById('id_del');
 const fistName = document.getElementById('First name_del');
 const lastName = document.getElementById('Last name_del');
@@ -38,11 +15,10 @@ async function deleteModalData(id) {
                 lastName.value = `${user.lastName}`;
                 age.value = `${user.age}`;
                 email.value = `${user.username}`;
-
             })
 
     } else {
-        alert(`HTTP Error, ${userResponse.status}`)
+        alert(`Error, ${userResponse.status}`)
     }
 }
 
@@ -57,7 +33,7 @@ async function deleteUser() {
     }
 
     await fetch(url, method).then(() => {
-        $('#deleteBtn').click();
+        $('#deleteCloseBtn').click();
         getAdminGeneralPage();
     })
 }

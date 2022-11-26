@@ -1,4 +1,4 @@
-const form = document.getElementById('formForEditing')
+const form = document.getElementById('formForEditing');
 const id_ed = document.getElementById('id_ed');
 const fistName = document.getElementById('First name_ed');
 const lastName = document.getElementById('Last name_ed');
@@ -18,10 +18,11 @@ async function editModalData(id) {
                 age.value = `${user.age}`;
                 email.value = `${user.username}`;
                 password.value = `${user.password}`;
+                getRolesForEditForm();
             })
 
     } else {
-        alert(`HTTP Error, ${usersPage.status}`)
+        alert(`Error, ${usersPage.status}`)
     }
 }
 
@@ -51,7 +52,7 @@ async function editUser() {
     }
 
     await fetch(url, method).then(() => {
-        $('#editingBtn').click();
+        $('#closeBtn_ed').click();
         getAdminGeneralPage();
     })
 }
