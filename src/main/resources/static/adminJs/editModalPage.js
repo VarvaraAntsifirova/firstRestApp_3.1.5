@@ -1,18 +1,18 @@
 let editModal = document.getElementById('editModal');
 let span = document.getElementsByClassName("close")[0];
 let span1 = document.getElementsByClassName("close")[1];
-
+/*
 function editModalPage() {
     editModal.style.display = "block";
-}
+}*/
 
-span.onclick = function () {
+/*span.onclick = function () {
     editModal.style.display = "none";
 }
 
 span1.onclick = function () {
     editModal.style.display = "none";
-}
+}*/
 
 window.onclick = function (event) {
     if (event.target == editModal) {
@@ -21,13 +21,12 @@ window.onclick = function (event) {
 }
 
 function handleFormSubmit(event) {
-    // Просим форму не отправлять данные самостоятельно
     event.preventDefault()
-    console.log('Отправка!')
 }
 
 const applicantForm = document.getElementById('mars-once')
 applicantForm.addEventListener('submit', handleFormSubmit)
+
 function getInformationAboutUser(user) {
     let form = document.createElement("form")
     let roles = []

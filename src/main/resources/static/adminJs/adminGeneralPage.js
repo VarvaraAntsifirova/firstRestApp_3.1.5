@@ -33,7 +33,9 @@ function loadTableData(listOfUsers) {
                 </button>
             </td>
             <td>
-                <button id="deleteModalButton" class="btn btn-danger" onclick="deleteModalPage()">
+                <button class="btn btn-danger" data-bs-toggle="modal" 
+                           data-bs-target="#deleteModal"
+                           onclick="deleteFormFill(${user.id})">
                     Delete
                 </button>
             </td>
