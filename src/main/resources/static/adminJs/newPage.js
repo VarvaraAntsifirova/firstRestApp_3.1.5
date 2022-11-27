@@ -1,10 +1,6 @@
 const url = '/api/admin/newUser';
-const roles = document.querySelector('#signup-roles').selectedOptions;
+const roles = document.querySelector('#roles').selectedOptions;
 const form = document.forms["formForCreatingNewUser"];
-
-$(async function () {
-    await newUser();
-});
 
 async function newUser() {
 
@@ -32,8 +28,6 @@ async function newUser() {
             })
         }).then(() => {
             form.reset();
-            getAdminGeneralPage();
-            $('#usersTable').click();
         });
     }
 }
