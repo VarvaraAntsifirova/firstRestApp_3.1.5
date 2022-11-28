@@ -1,63 +1,49 @@
-let span2 = document.getElementsByClassName("close")[2];
-let span3 = document.getElementsByClassName("close")[3];
-const deleteModal = document.getElementById("deleteModal")
-
-function deleteModalPage(id) {
-    deleteModal.style.display = "block";
-    deleteModalData(id)
-}
-
-span2.onclick = function () {
-    deleteModal.style.display = "none";
-}
-
-span3.onclick = function () {
-    deleteModal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == deleteModal) {
-        deleteModal.style.display = "none";
-    }
-}
-
+const form_del = document.getElementById('formForDeleting');
 const id_del = document.getElementById('id_del');
-const fistName = document.getElementById('First name_del');
-const lastName = document.getElementById('Last name_del');
-const age = document.getElementById('age_del');
-const email = document.getElementById('email_del');
+const firstName_del = document.getElementById('First name_del');
+const lastName_del = document.getElementById('Last name_del');
+const age_del = document.getElementById('age_del');
+const username_del = document.getElementById('email_del');
 
 async function deleteModalData(id) {
-    const userByIdURL = '/api/admin/users/' + id;
-    let userResponse = await fetch(userByIdURL);
-    if (userResponse.ok) {
-        let userJSONData =
-            await userResponse.json().then(user => {
+    const urlForDel = '/api/admin/users/' + id;
+    let usersPageDel = await fetch(urlForDel);
+    if (usersPageDel.ok) {
+        let userData =
+            await usersPageDel.json().then(user => {
                 id_del.value = `${user.id}`;
-                fistName.value = `${user.firstName}`;
-                lastName.value = `${user.lastName}`;
-                age.value = `${user.age}`;
-                email.value = `${user.username}`;
-
+                firstName_del.value = `${user.firstName}`;
+                lastName_del.value = `${user.lastName}`;
+                age_del.value = `${user.age}`;
+                username_del.value = `${user.username}`;
             })
-
     } else {
-        alert(`HTTP Error, ${userResponse.status}`)
+        alert(`Error, ${usersPageDel.status}`)
     }
 }
 
-async function deleteUser() {
-    let url = '/api/admin/users/' + id_del.value + '/delete'
+function deleteUser() {
 
-    let method = {
-        method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json"
+    form_del.addEventListener('submit', deletingUser);
+
+    function deletingUser(event) {
+        event.preventDefault();
+        let url = '/api/admin/users/' + id_del.value
+        alert(url)
+
+        let method = {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
+
+        fetch(url, method).then(() => {alert(id_del.value)
+
+        });
     }
 
-    await fetch(url, method).then(() => {
-        $('#deleteBtn').click();
-        getAdminGeneralPage();
-    })
 }
+
+/* $('#deleteCloseBtn').click();
+            getAdminGeneralPage();*/

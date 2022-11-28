@@ -55,12 +55,6 @@ public class AdminController {
     }
 
 
-    @PostMapping("/newUser")
-    public String addUser(@ModelAttribute("user") User user) {
-        userService.createUser(user);
-        return "/viewsForAdmin/new";
-    }
-
     @PutMapping("/users/{id}/editUser")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);

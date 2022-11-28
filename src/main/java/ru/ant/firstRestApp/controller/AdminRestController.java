@@ -42,7 +42,7 @@ public class AdminRestController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<?> showAdminGeneralPage(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> showUser(@PathVariable("id") Integer id) {
         User user = userService.showUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class AdminRestController {
     }
 
     @GetMapping("/roles")
-    public ResponseEntity<List<Role>> getAllRoles() {
+    public ResponseEntity<?> getAllRoles() {
         return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
     }
 
@@ -64,7 +64,7 @@ public class AdminRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{id}/delete")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);

@@ -21,7 +21,8 @@ function loadTableData(listOfUsers) {
         for (let role of user.roles) {
             roles.push(" " + role.roleName.toString().replaceAll('ROLE_', ''))
         }
-        dataHtml += `<tr><td>${user.id}</td>
+        dataHtml += `<tr>
+            <td>${user.id}</td>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.age}</td>
@@ -37,7 +38,7 @@ function loadTableData(listOfUsers) {
             <td>
                 <button class="btn btn-danger" data-bs-toggle="modal" 
                            data-bs-target="#deleteModal"
-                           onclick="deleteModalPage(${user.id})">
+                           onclick="deleteModalData(${user.id})">
                     Delete
                 </button>
             </td>
