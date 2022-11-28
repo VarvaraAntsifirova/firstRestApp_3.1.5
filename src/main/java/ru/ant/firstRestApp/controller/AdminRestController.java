@@ -42,7 +42,7 @@ public class AdminRestController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<?> showAdminGeneralPage(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> showUser(@PathVariable("id") Integer id) {
         User user = userService.showUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

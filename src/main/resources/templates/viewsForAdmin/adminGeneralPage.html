@@ -156,7 +156,7 @@
                                                         type="button">Close
                                                 </button>
                                                 <button class="btn btn-primary" id="editBtn"
-                                                        type="button" onclick="editUser(); getAdminGeneralPage();">
+                                                        type="button" onclick="editUser()">
                                                     Edit
                                                 </button>
                                             </div>
@@ -164,89 +164,91 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <!--Модальное окно для удаления-->
+                            <!--Модальное окно для удаления-->
 
-                        <div class="modal" id="deleteModal" >
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <form class="text-center" id="deletingForm">
+                            <div class="modal" id="deleteModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form id="formForDeleting">
 
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Delete User</h4>
-                                            <span class="btn-close" data-bs-dismiss="modal"
-                                                  aria-label="Close"></span>
-                                        </div>
-
-                                        <div class="modal-body col-md text-center">
-
-                                            <div class="modal-body col-md text-center">
-                                                <br>
-
-                                                <label for="id_del"><strong>ID</strong></label>
-                                                <input type="text" class="form-control" name="id"
-                                                       id="id_del" placeholder="ID" disabled>
-
-                                                </br>
-
-                                                <label for="First name_del"><strong> First
-                                                    name </strong></label>
-                                                <input type="text" class="form-control" name="firstName"
-                                                       id="First name_del" placeholder="First name" disabled>
-
-                                                </br>
-
-                                                <label for="Last name_del"><strong> Last
-                                                    name </strong></label>
-                                                <input type="text" class="form-control"
-                                                       id="Last name_del" placeholder="Last name" disabled>
-
-                                                </br>
-
-
-                                                <label for="age_del"><strong> Age </strong></label>
-                                                <input type="number" class="form-control"
-                                                       id="age_del" placeholder="Age" disabled>
-
-                                                </br>
-
-                                                <label for="email_del"><strong>Email</strong></label>
-                                                <input name="username" type="email" placeholder="Email"
-                                                       class="form-control" id="email_del"
-                                                       disabled/>
-
-                                                </br>
-
-                                                <label><strong> Role </strong></label>
-                                                <select class="form-select" size="2" name="roles" id="roles_del"
-                                                        disabled>
-                                                    <option>USER</option>
-                                                    <option>ADMIN</option>
-                                                </select>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Delete User</h4>
+                                                <span class="btn-close" data-bs-dismiss="modal"
+                                                      aria-label="Close"></span>
                                             </div>
 
-                                        </div>
+                                            <div class="modal-body col-md text-center">
 
-                                        <div class="modal-footer">
-                                            <button class="btn btn-secondary close" data-dismiss="modal" id="deleteCloseBtn"
-                                                    type="button">Close
-                                            </button>
-                                            <button class="btn btn-danger" id="deleteBtn"
-                                                    type="button" onclick="deleteUser()">
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </form>
+                                                <div class="modal-body col-md text-center">
+                                                    <br>
+
+                                                    <label for="id_del"><strong>ID</strong></label>
+                                                    <input th:name="id" th:type="text"
+                                                           class="form-control" id="id_del" placeholder="ID" disabled>
+
+                                                    </br>
+
+                                                    <label for="First name_del"><strong> First
+                                                        name </strong></label>
+                                                    <input th:name="firstName" th:type="text" class="form-control"
+                                                           id="First name_del" placeholder="First name" disabled>
+
+                                                    </br>
+
+                                                    <label for="Last name_del"><strong> Last
+                                                        name </strong></label>
+                                                    <input th:name="lastName" th:type="text" class="form-control"
+                                                           id="Last name_del" placeholder="Last name" disabled>
+
+                                                    </br>
+
+
+                                                    <label for="age_del"><strong> Age </strong></label>
+                                                    <input th:name="age" th:type="number" class="form-control"
+                                                           id="age_del" placeholder="Age" disabled>
+
+                                                    </br>
+
+                                                    <label for="email_del"><strong>Email</strong></label>
+                                                    <input th:name="username" th:type="email"
+                                                           class="form-control" id="email_del"
+                                                           placeholder="Email" disabled>
+
+                                                    </br>
+
+                                                    <label><strong> Role </strong></label>
+                                                    <select class="form-select" size="2" th:name="roles" id="roles_del"
+                                                            disabled>
+                                                        <option>USER</option>
+                                                        <option>ADMIN</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary close" data-dismiss="modal"
+                                                        id="deleteCloseBtn"
+                                                        type="button">Close
+                                                </button>
+                                                <button class="btn btn-danger" id="deleteBtn"
+                                                        type="button" onclick="deleteUser()">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+
+
+                            <!--Модальное окно для удаления end-->
+
+                            </tr>
+                            </tbody>
                         </div>
-
-                        <!--Модальное окно для удаления-->
-
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
                 <!--Table of users-->
