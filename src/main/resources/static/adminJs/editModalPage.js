@@ -8,10 +8,10 @@ const password = document.getElementById('password_ed');
 
 async function editModalData(id) {
     const url = '/api/admin/users/' + id;
-    let usersPage = await fetch(url);
-    if (usersPage.ok) {
+    let usersPageEd = await fetch(url);
+    if (usersPageEd.ok) {
         let userData =
-            await usersPage.json().then(user => {
+            await usersPageEd.json().then(user => {
                 id_ed.value = `${user.id}`;
                 firstName.value = `${user.firstName}`;
                 lastName.value = `${user.lastName}`;
@@ -21,12 +21,12 @@ async function editModalData(id) {
                 getRolesForEditForm();
             })
     } else {
-        alert(`Error, ${usersPage.status}`)
+        alert(`Error, ${usersPageEd.status}`)
     }
 }
 
 async function editUser() {
-   /* let url = '/api/admin/users/' + id_ed.value + '/edit'
+    let url = '/api/admin/users/' + id_ed.value + '/edit'
     let listOfRole = [];
 
     for (let i = 0; i < form.roles.options.length; i++) {
@@ -53,11 +53,11 @@ async function editUser() {
     await fetch(url, method).then(() => {
         $('#closeBtn_ed').click();
         getAdminGeneralPage();
-    })*/
+    })
 }
 
 async function getRolesForEditForm() {
-   /* const getRolesURL = '/api/admin/roles'
+    const getRolesURL = '/api/admin/roles'
     let rolesPage = await fetch(getRolesURL);
 
     if (rolesPage.ok) {
@@ -71,5 +71,5 @@ async function getRolesForEditForm() {
             })
     } else {
         alert(`Error, ${rolesPage.status}`)
-    }*/
+    }
 }
