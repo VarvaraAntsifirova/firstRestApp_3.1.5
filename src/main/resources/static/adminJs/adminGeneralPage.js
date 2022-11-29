@@ -1,4 +1,4 @@
-const url = '/api/admin/generalPage'
+const url = '/rest/admin/generalPage'
 
 async function getAdminGeneralPage() {
     let page = await fetch(url)
@@ -46,6 +46,5 @@ function loadTableData(listOfUsers) {
     }
     tableBody.innerHTML = dataHtml;
 }
-
 
 getAdminGeneralPage();

@@ -1,38 +1,38 @@
 const form_ed = document.getElementById('formForEditing');
 const id_ed = document.getElementById('id_ed');
-const firstName = document.getElementById('First name_ed');
-const lastName = document.getElementById('Last name_ed');
-const age = document.getElementById('age_ed');
-const email = document.getElementById('email_ed');
-const password = document.getElementById('password_ed');
+const firstName_ed = document.getElementById('First name_ed');
+const lastName_ed = document.getElementById('Last name_ed');
+const age_ed = document.getElementById('age_ed');
+const email_ed = document.getElementById('email_ed');
+const password_ed = document.getElementById('password_ed');
 
 async function editModalData(id) {
-    const url = '/api/admin/users/' + id;
-    let usersPageEd = await fetch(url);
+    const urlDataEd = '/rest/admin/users/' + id;
+    let usersPageEd = await fetch(urlDataEd);
     if (usersPageEd.ok) {
         let userData =
-            await usersPageEd.json().then(user => {
+            await usersPageEd.json().then(async user => {
                 id_ed.value = `${user.id}`;
-                firstName.value = `${user.firstName}`;
-                lastName.value = `${user.lastName}`;
-                age.value = `${user.age}`;
-                email.value = `${user.username}`;
-                password.value = `${user.password}`;
-                getRolesForEditForm();
+                firstName_ed.value = `${user.firstName}`;
+                lastName_ed.value = `${user.lastName}`;
+                age_ed.value = `${user.age}`;
+                email_ed.value = `${user.username}`;
+                password_ed.value = `${user.password}`;
+
             })
+
     } else {
         alert(`Error, ${usersPageEd.status}`)
     }
 }
+const roles_ed = document.querySelector('#rolesForEditing').selectedOptions;
 
 async function editUser() {
-    let url = '/api/admin/users/' + id_ed.value + '/edit'
+    let urlEdit = '/rest/admin/users/' + id_ed.value
     let listOfRole = [];
 
-    for (let i = 0; i < form.roles.options.length; i++) {
-        if (form.roles.options[i].selected) listOfRole.push({
-            id: form.roles.options[i].value
-        })
+    for (let i = 0; i < roles_ed.length; i++) {
+        listOfRole.push(roles_ed[i].value);
     }
 
     let method = {
@@ -41,35 +41,19 @@ async function editUser() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-                firstName: form.firstName.value,
-                lastName: form.lastName.value,
-                age: form.age.value,
-                username: form.username.value,
-                password: form.password.value,
-                roles: listOfRole
-            })
+            firstName: form_ed.firstName.value,
+            lastName: form_ed.lastName.value,
+            age: form_ed.age.value,
+            username: form_ed.username.value,
+            password: form_ed.password.value,
+            roles: listOfRole
+        })
     }
 
-    await fetch(url, method).then(() => {
-        $('#closeBtn_ed').click();
+    await fetch(urlEdit, method).then(() => {
+        $('#editCloseBtn').click();
         getAdminGeneralPage();
     })
 }
 
-async function getRolesForEditForm() {
-    const getRolesURL = '/api/admin/roles'
-    let rolesPage = await fetch(getRolesURL);
 
-    if (rolesPage.ok) {
-        let rolesData =
-            await rolesPage.json().then(roles => {
-                let roleUser = roles[0];
-                let roleAdmin = roles[1];
-                form.roles.options[0] = new Option('USER', `${roleUser.id}`)
-                form.roles.options[1] = new Option('ADMIN', `${roleAdmin.id}`)
-
-            })
-    } else {
-        alert(`Error, ${rolesPage.status}`)
-    }
-}

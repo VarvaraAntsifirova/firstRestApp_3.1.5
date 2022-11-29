@@ -1,10 +1,10 @@
-const url = '/api/admin/newUser';
+const url_new = '/rest/admin/new';
 const roles = document.querySelector('#roles').selectedOptions;
-const form = document.forms["formForCreatingNewUser"];
+const form_new = document.forms["formForCreatingNewUser"];
 
 async function newUser() {
 
-    form.addEventListener('submit', addNewUser)
+    form_new.addEventListener('submit', addNewUser)
 
     function addNewUser(e) {
         e.preventDefault();
@@ -13,21 +13,22 @@ async function newUser() {
             listOfRole.push(roles[i].value);
         }
 
-        fetch(url, {
+        fetch(url_new, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstName: form.firstName.value,
-                lastName: form.lastName.value,
-                age: form.age.value,
-                username: form.username.value,
-                password: form.password.value,
+                firstName: form_new.firstName.value,
+                lastName: form_new.lastName.value,
+                age: form_new.age.value,
+                username: form_new.username.value,
+                password: form_new.password.value,
                 roles: listOfRole
             })
         }).then(() => {
-            form.reset();
+            form_new.reset();
+            $('#tabAllUsers').click();
         });
     }
 }

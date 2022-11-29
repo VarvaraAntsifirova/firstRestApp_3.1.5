@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/rest/admin")
 public class AdminRestController {
 
     private final UserService userService;
@@ -47,7 +47,7 @@ public class AdminRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/newUser")
+    @PostMapping("/new")
     public ResponseEntity<?> addUser(@RequestBody User user) {
         userService.createUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
@@ -58,8 +58,8 @@ public class AdminRestController {
         return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
     }
 
-    @PutMapping("/users/{id}/edit")
-    public ResponseEntity<?> editUser(@ModelAttribute("user") User user, @PathVariable("id") Integer id) {
+    @PutMapping("/users/{id}")
+    public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

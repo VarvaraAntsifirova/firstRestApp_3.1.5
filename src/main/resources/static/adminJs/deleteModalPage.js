@@ -6,7 +6,7 @@ const age_del = document.getElementById('age_del');
 const username_del = document.getElementById('email_del');
 
 async function deleteModalData(id) {
-    const urlForDel = '/api/admin/users/' + id;
+    const urlForDel = '/rest/admin/users/' + id;
     let usersPageDel = await fetch(urlForDel);
     if (usersPageDel.ok) {
         let userData =
@@ -28,8 +28,7 @@ function deleteUser() {
 
     function deletingUser(event) {
         event.preventDefault();
-        let url = '/api/admin/users/' + id_del.value
-        alert(url)
+        let url = '/rest/admin/users/' + id_del.value
 
         let method = {
             method: 'DELETE',
@@ -38,12 +37,10 @@ function deleteUser() {
             }
         }
 
-        fetch(url, method).then(() => {alert(id_del.value)
-
+        fetch(url, method).then(() => {
+            $("#deleteCloseBtn").click();
+            getAdminGeneralPage();
         });
     }
-
 }
 
-/* $('#deleteCloseBtn').click();
-            getAdminGeneralPage();*/
