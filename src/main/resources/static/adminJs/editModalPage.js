@@ -11,13 +11,14 @@ async function editModalData(id) {
     let usersPageEd = await fetch(urlDataEd);
     if (usersPageEd.ok) {
         let userData =
-            await usersPageEd.json().then(async user => {
+            await usersPageEd.json().then( user => {
                 id_ed.value = `${user.id}`;
                 firstName_ed.value = `${user.firstName}`;
                 lastName_ed.value = `${user.lastName}`;
                 age_ed.value = `${user.age}`;
                 email_ed.value = `${user.username}`;
                 password_ed.value = `${user.password}`;
+                getRoles(id);
 
             })
 
@@ -25,14 +26,34 @@ async function editModalData(id) {
         alert(`Error, ${usersPageEd.status}`)
     }
 }
-const roles_ed = document.querySelector('#rolesForEditing').selectedOptions;
+
+async function getRoles(id) {
+    const urlRoles = '/rest/admin/' + id + '/roles';
+    alert(urlRoles)
+    let usersPageRole = await fetch(urlRoles);
+    if (usersPageRole.ok) {
+        let userData =
+            await usersPageRole.json().then(async roles => {
+                for (let role of roles) {
+                    if (role === "ADMIN") {
+                        document.getElementById("roleAdmin").selected = true;
+                    } else if (role === "USER") {
+                        document.getElementById("roleUser").selected = true;
+                    }
+                }
+            })
+    }
+}
+
 
 async function editUser() {
     let urlEdit = '/rest/admin/users/' + id_ed.value
     let listOfRole = [];
 
-    for (let i = 0; i < roles_ed.length; i++) {
-        listOfRole.push(roles_ed[i].value);
+    for (let i = 0; i < form_ed.rolesForEditing.options.length; i++) {
+        if (form_ed.rolesForEditing.options[i].selected) {
+            listOfRole.push("ROLE_" + form_ed.rolesForEditing.options[i].value);
+        }
     }
 
     let method = {

@@ -53,9 +53,13 @@ public class AdminRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/roles")
-    public ResponseEntity<?> getAllRoles() {
-        return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
+    @GetMapping("/{id}/roles")
+    public ResponseEntity<?> getAllRoles(@PathVariable("id") Integer id) {
+        User user = userService.showUser(id);
+        System.out.println("---------------------");
+        System.out.println(user.getRoles());
+        System.out.println("---------------------------");
+        return new ResponseEntity<>(user.getRoles(), HttpStatus.OK);
     }
 
     @PutMapping("/users/{id}")

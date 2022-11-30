@@ -1,5 +1,5 @@
 const url_new = '/rest/admin/new';
-const roles = document.querySelector('#roles').selectedOptions;
+const roles_new = document.querySelector('#roles').selectedOptions;
 const form_new = document.forms["formForCreatingNewUser"];
 
 async function newUser() {
@@ -9,8 +9,8 @@ async function newUser() {
     function addNewUser(e) {
         e.preventDefault();
         let listOfRole = [];
-        for (let i = 0; i < roles.length; i++) {
-            listOfRole.push(roles[i].value);
+        for (let i = 0; i < roles_new.length; i++) {
+            listOfRole.push(roles_new[i].value);
         }
 
         fetch(url_new, {
