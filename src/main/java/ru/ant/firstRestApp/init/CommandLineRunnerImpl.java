@@ -35,7 +35,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         User admin = new User();
         admin.setUsername("admin@mail.ru");
-        admin.setPassword("$2y$10$aHyB0C.gDd4p2U.jLBCS8ep6U4eh/CFSvZUCM8OTAcuAUb2h5Crgq"); //100
+        admin.setPassword("100");
         admin.setFirstName("Admin");
         admin.setLastName("Admin");
         admin.setAge(18);
@@ -44,7 +44,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         User user = new User();
         user.setUsername("user@mail.ru");
-        user.setPassword("$2y$10$cTd02aDowqkoLP/x8W.tuubXUsKlEcc06/EoDafv6g66SEwxxbYw2"); //200
+        user.setPassword("200");
         user.setFirstName("User");
         user.setLastName("User");
         user.setAge(24);

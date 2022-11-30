@@ -16,7 +16,7 @@ function getInformationAboutUser(user) {
     let roles = []
 
     for (let role of user.roles) {
-        roles.push(" " + role.role.toString().replaceAll('ROLE_', ''))
+        roles.push(" " + role.roleName.toString().replaceAll('ROLE_', ''))
     }
 
     tr.innerHTML =
