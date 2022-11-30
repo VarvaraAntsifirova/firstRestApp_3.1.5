@@ -5,25 +5,6 @@ const lastName_ed = document.getElementById('Last name_ed');
 const age_ed = document.getElementById('age_ed');
 const email_ed = document.getElementById('email_ed');
 const password_ed = document.getElementById('password_ed');
-const roles_ed = document.getElementById('rolesForEditing');
-
-async function getRoles(id) {
-    const urlRoles = '/rest/admin/' + id + '/roles';
-    let usersPageRole = await fetch(urlRoles);
-    let rolesEd = []
-    if (usersPageRole.ok) {
-        let userData =
-            await usersPageRole.json().then(async roles => {
-                for (let role of roles) {
-                    if (role.role === "ADMIN") {
-                        document.getElementById("roleAdmin").selected = true;
-                    } else if (role.role === "USER") {
-                        document.getElementById("roleUser").selected = true;
-                    }
-                }
-            })
-    }
-}
 
 async function editModalData(id) {
     const urlDataEd = '/rest/admin/users/' + id;
@@ -37,16 +18,11 @@ async function editModalData(id) {
                 age_ed.value = `${user.age}`;
                 email_ed.value = `${user.username}`;
                 password_ed.value = `${user.password}`;
-                await getRoles(id);
-
             })
-
     } else {
         alert(`Error, ${usersPageEd.status}`)
     }
 }
-
-
 
 async function editUser() {
     let urlEdit = '/rest/admin/users/' + id_ed.value

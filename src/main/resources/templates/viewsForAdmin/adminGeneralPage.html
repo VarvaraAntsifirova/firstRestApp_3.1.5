@@ -116,31 +116,31 @@
                                             <input type="text" name="firstName" class="form-control" id="firstName"
                                                    placeholder="First name">
 
-                                            </br>
+                                            <br/>
 
                                             <label for="lastName"><strong> Last name </strong></label>
                                             <input type="text" name="lastName" class="form-control" id="lastName"
                                                    placeholder="Last name">
 
-                                            </br>
+                                            <br/>
 
                                             <label for="age"><strong> Age </strong></label>
                                             <input type="number" name="age" class="form-control" id="age"
                                                    placeholder="Age">
 
-                                            </br>
+                                            <br/>
 
                                             <label for="email"><strong> Email </strong></label>
                                             <input type="email" name="username" class="form-control" id="email"
                                                    placeholder="Email">
 
-                                            </br>
+                                            <br/>
 
                                             <label for="password"><strong> Password </strong></label>
                                             <input type="password" name="password" class="form-control" id="password"
                                                    placeholder="Password">
 
-                                            </br>
+                                            <br/>
 
                                             <label for="roles"><strong> Role </strong></label>
                                             <select multiple class="form-control form-control-sm" id="roles"
@@ -149,7 +149,7 @@
                                                 <option id="roleNewAdmin">ADMIN</option>
                                             </select>
 
-                                            </br>
+                                            <br/>
 
                                             <button class="btn btn-success" type="submit" id="signup-submit"
                                                     form="formForCreatingNewUser" onclick="newUser()">Add new user
@@ -167,7 +167,7 @@
     </div>
     <!--Панель Админа-->
 </div>
-</div>
+
 <div class="modal" id="editModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -186,14 +186,14 @@
                         <input name="id" th:type="text"
                                class="form-control" id="id_ed" placeholder="ID"
                                disabled>
-                        </br>
+                        <br/>
 
                         <label for="First name_ed"><strong> First
                             name </strong></label>
                         <input name="firstName" th:type="text"
                                class="form-control" id="First name_ed"
                                placeholder="First name">
-                        </br>
+                        <br/>
 
                         <label for="Last name_ed"><strong> Last
                             name </strong></label>
@@ -201,18 +201,18 @@
                                class="form-control" id="Last name_ed"
                                placeholder="Last name">
 
-                        </br>
+                        <br/>
 
                         <label for="age_ed"><strong> Age </strong></label>
                         <input name="age" th:type="number"
                                class="form-control" id="age_ed" placeholder="Age">
-                        </br>
+                        <br/>
 
                         <label for="email_ed"><strong>Email</strong></label>
                         <input name="username" th:type="email"
                                class="form-control" id="email_ed"/>
 
-                        </br>
+                        <br/>
 
                         <label for="Password_ed"><strong>
                             Password </strong></label>
@@ -220,7 +220,7 @@
                                class="form-control" id="Password_ed"
                                placeholder="Password">
 
-                        </br>
+                        <br/>
 
                         <label for="rolesForEditing"><strong> Role </strong></label>
                         <select multiple class="form-control" size="2"
@@ -273,7 +273,7 @@
                                class="form-control" id="id_del" placeholder="ID"
                                disabled>
 
-                        </br>
+                        <br/>
 
                         <label for="First name_del"><strong> First
                             name </strong></label>
@@ -282,7 +282,7 @@
                                id="First name_del" placeholder="First name"
                                disabled>
 
-                        </br>
+                        <br/>
 
                         <label for="Last name_del"><strong> Last
                             name </strong></label>
@@ -290,23 +290,22 @@
                                class="form-control"
                                id="Last name_del" placeholder="Last name" disabled>
 
-                        </br>
-
+                        <br/>
 
                         <label for="age_del"><strong> Age </strong></label>
                         <input th:name="age" th:type="number" class="form-control"
                                id="age_del" placeholder="Age" disabled>
 
-                        </br>
+                        <br/>
 
                         <label for="email_del"><strong>Email</strong></label>
                         <input th:name="username" th:type="email"
                                class="form-control" id="email_del"
                                placeholder="Email" disabled>
 
-                        </br>
+                        <br/>
 
-                        <label><strong> Role </strong></label>
+                        <label for="roles_del"><strong> Role </strong></label>
                         <select class="form-select" size="2" th:name="roles"
                                 id="roles_del"
                                 disabled>

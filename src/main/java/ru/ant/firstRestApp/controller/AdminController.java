@@ -14,7 +14,6 @@ import java.security.Principal;
 @RequestMapping("/admin")
 public class AdminController {
 
-
     private final UserService userService;
 
     private final RoleService roleService;
@@ -35,7 +34,6 @@ public class AdminController {
         return "/viewsForAdmin/adminGeneralPage";
     }
 
-
     @GetMapping("/personalPage")
     public String showAdminPersonalPage(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
@@ -44,26 +42,4 @@ public class AdminController {
         return "/viewsForAdmin/adminPersonalPage";
     }
 
-    @GetMapping("/new")
-    public String getViewForNewUser(Principal principal, Model model) {
-        User user = userService.findByUsername(principal.getName());
-        model.addAttribute("admin", userService.showUser(user.getId()));
-        model.addAttribute("user", new User());
-        model.addAttribute("personalRole", user.convertSetOfRoleToString(userService.showUser(user.getId()).getRoles()));
-        model.addAttribute("roles", roleService.getAllRoles());
-        return "/viewsForAdmin/new";
-    }
-
-
-    @PutMapping("/users/{id}/editUser")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Integer id) {
-        userService.updateUser(id, user);
-        return "redirect:/admin";
-    }
-
-    @DeleteMapping("/users/{id}/delete")
-    public String deleteUser(@PathVariable("id") Integer id) {
-        userService.deleteUser(id);
-        return "redirect:/admin";
-    }
 }

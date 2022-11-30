@@ -15,11 +15,11 @@ function loadTableData(listOfUsers) {
     const tableBody = document.getElementById('tbody');
     let dataHtml = '';
 
-
-    for(let user of listOfUsers) {
+    for (let user of listOfUsers) {
         let roles = [];
+
         for (let role of user.roles) {
-            roles.push(" " + role.roleName.toString().replaceAll('ROLE_', ''))
+            roles.push(" " + role.role.toString().replaceAll('ROLE_', ''))
         }
         dataHtml += `<tr>
             <td>${user.id}</td>

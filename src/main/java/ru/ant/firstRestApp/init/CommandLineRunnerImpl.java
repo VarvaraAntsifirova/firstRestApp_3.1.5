@@ -5,20 +5,20 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.ant.firstRestApp.model.Role;
 import ru.ant.firstRestApp.model.User;
-import ru.ant.firstRestApp.repository.RoleRepository;
-import ru.ant.firstRestApp.repository.UserRepository;
+import ru.ant.firstRestApp.service.RoleService;
+import ru.ant.firstRestApp.service.UserService;
 
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     @Autowired
-    public CommandLineRunnerImpl(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+    public CommandLineRunnerImpl(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
     }
 
     @Override
@@ -26,12 +26,12 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         Role roleAdmin = new Role();
         roleAdmin.setRoleName("ROLE_ADMIN");
         roleAdmin.setId(1);
-        roleRepository.save(roleAdmin);
+        roleService.addRole(roleAdmin);
 
         Role roleUser = new Role();
         roleUser.setRoleName("ROLE_USER");
         roleUser.setId(2);
-        roleRepository.save(roleUser);
+        roleService.addRole(roleUser);
 
         User admin = new User();
         admin.setUsername("admin@mail.ru");
@@ -40,7 +40,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         admin.setLastName("Admin");
         admin.setAge(18);
         admin.setRoles(new String[]{"ROLE_ADMIN", "ROLE_USER"});
-        userRepository.save(admin);
+        userService.createUser(admin);
 
         User user = new User();
         user.setUsername("user@mail.ru");
@@ -49,7 +49,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         user.setLastName("User");
         user.setAge(24);
         user.setRoles(new String[]{"ROLE_USER"});
-        userRepository.save(user);
+        userService.createUser(user);
     }
 }
 

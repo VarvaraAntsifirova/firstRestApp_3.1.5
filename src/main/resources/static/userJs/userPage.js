@@ -1,4 +1,4 @@
-const url='/rest/user-page'
+const url='/rest/userPage'
 
  async function getUserPage () {
      let page = await fetch(url)

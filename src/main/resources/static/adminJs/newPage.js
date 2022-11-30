@@ -5,14 +5,14 @@ const form_new = document.forms["formForCreatingNewUser"];
 async function newUser() {
     form_new.addEventListener('submit', addNewUser)
 
-    function addNewUser(e) {
+    async function addNewUser(e) {
         e.preventDefault();
         let listOfRole = [];
         for (let i = 0; i < roles_new.length; i++) {
             listOfRole.push("ROLE_" + roles_new[i].value);
         }
 
-        fetch(url_new, {
+        let method = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,10 +25,12 @@ async function newUser() {
                 password: form_new.password.value,
                 roles: listOfRole
             })
-        }).then(() => {
+        }
+
+        await fetch(url_new, method).then(() => {
             form_new.reset();
             getAdminGeneralPage();
-             $("#tabBtnAllUsers").click();
+            $("#tabBtnAllUsers").click();
         });
     }
 }

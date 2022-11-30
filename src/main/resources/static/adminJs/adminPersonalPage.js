@@ -1,6 +1,6 @@
-const url='/rest/admin/personalPage'
+const url = '/rest/admin/personalPage'
 
-async function getUserPage () {
+async function getUserPage() {
     let page = await fetch(url)
 
     if (page.ok) {
@@ -16,10 +16,10 @@ function getInformationAboutUser(user) {
     let roles = []
 
     for (let role of user.roles) {
-        roles.push(" " + role.roleName.toString().replaceAll('ROLE_', ''))
+        roles.push(" " + role.role.toString().replaceAll('ROLE_', ''))
     }
 
-    tr.innerHTML=
+    tr.innerHTML =
         `<tr>
             <td>${user.id}</td>
             <td>${user.firstName}</td>
