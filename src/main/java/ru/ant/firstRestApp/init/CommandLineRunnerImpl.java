@@ -22,7 +22,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Role roleAdmin = new Role();
         roleAdmin.setRoleName("ROLE_ADMIN");
         roleAdmin.setId(1);

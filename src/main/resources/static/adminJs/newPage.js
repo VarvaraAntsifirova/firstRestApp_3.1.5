@@ -3,14 +3,13 @@ const roles_new = document.querySelector('#roles').selectedOptions;
 const form_new = document.forms["formForCreatingNewUser"];
 
 async function newUser() {
-
     form_new.addEventListener('submit', addNewUser)
 
     function addNewUser(e) {
         e.preventDefault();
         let listOfRole = [];
         for (let i = 0; i < roles_new.length; i++) {
-            listOfRole.push(roles_new[i].value);
+            listOfRole.push("ROLE_" + roles_new[i].value);
         }
 
         fetch(url_new, {
@@ -28,7 +27,8 @@ async function newUser() {
             })
         }).then(() => {
             form_new.reset();
-            $('#tabAllUsers').click();
+            getAdminGeneralPage();
+             $("#tabBtnAllUsers").click();
         });
     }
 }

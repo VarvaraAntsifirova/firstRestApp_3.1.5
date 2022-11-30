@@ -31,7 +31,7 @@ function loadTableData(listOfUsers) {
             <td>
                 <button class="btn btn-primary" data-bs-toggle="modal" 
                            data-bs-target="#editModal"
-                           onclick="editModalData(${user.id}/*, roles*/)">
+                           onclick="editModalData(${user.id})">
                     Edit
                 </button>
             </td>

@@ -5,20 +5,39 @@ const lastName_ed = document.getElementById('Last name_ed');
 const age_ed = document.getElementById('age_ed');
 const email_ed = document.getElementById('email_ed');
 const password_ed = document.getElementById('password_ed');
+const roles_ed = document.getElementById('rolesForEditing');
+
+async function getRoles(id) {
+    const urlRoles = '/rest/admin/' + id + '/roles';
+    let usersPageRole = await fetch(urlRoles);
+    let rolesEd = []
+    if (usersPageRole.ok) {
+        let userData =
+            await usersPageRole.json().then(async roles => {
+                for (let role of roles) {
+                    if (role.role === "ADMIN") {
+                        document.getElementById("roleAdmin").selected = true;
+                    } else if (role.role === "USER") {
+                        document.getElementById("roleUser").selected = true;
+                    }
+                }
+            })
+    }
+}
 
 async function editModalData(id) {
     const urlDataEd = '/rest/admin/users/' + id;
     let usersPageEd = await fetch(urlDataEd);
     if (usersPageEd.ok) {
         let userData =
-            await usersPageEd.json().then( user => {
+            await usersPageEd.json().then(async user => {
                 id_ed.value = `${user.id}`;
                 firstName_ed.value = `${user.firstName}`;
                 lastName_ed.value = `${user.lastName}`;
                 age_ed.value = `${user.age}`;
                 email_ed.value = `${user.username}`;
                 password_ed.value = `${user.password}`;
-                getRoles(id);
+                await getRoles(id);
 
             })
 
@@ -27,23 +46,6 @@ async function editModalData(id) {
     }
 }
 
-async function getRoles(id) {
-    const urlRoles = '/rest/admin/' + id + '/roles';
-    alert(urlRoles)
-    let usersPageRole = await fetch(urlRoles);
-    if (usersPageRole.ok) {
-        let userData =
-            await usersPageRole.json().then(async roles => {
-                for (let role of roles) {
-                    if (role === "ADMIN") {
-                        document.getElementById("roleAdmin").selected = true;
-                    } else if (role === "USER") {
-                        document.getElementById("roleUser").selected = true;
-                    }
-                }
-            })
-    }
-}
 
 
 async function editUser() {
