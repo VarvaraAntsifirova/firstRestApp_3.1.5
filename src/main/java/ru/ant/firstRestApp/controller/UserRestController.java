@@ -12,7 +12,7 @@ import ru.ant.firstRestApp.service.UserService;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/rest")
 public class UserRestController {
 
     private final UserService userService;

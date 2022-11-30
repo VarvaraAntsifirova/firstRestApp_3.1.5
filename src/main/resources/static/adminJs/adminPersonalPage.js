@@ -1,4 +1,4 @@
-const url='/api/admin/personalPage'
+const url='/rest/admin/personalPage'
 
 async function getUserPage () {
     let page = await fetch(url)
