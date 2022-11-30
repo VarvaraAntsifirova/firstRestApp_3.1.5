@@ -20,37 +20,37 @@ public class AdminRestController {
     }
 
     @GetMapping("/personalPage")
-    public ResponseEntity<?> showAdminPersonalPage(Principal principal) {
+    public ResponseEntity<User> showAdminPersonalPage(Principal principal) {
         User user = userService.findByUsername(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/generalPage")
-    public ResponseEntity<?> showAdminGeneralPage() {
+    public ResponseEntity<List<User>> showAdminGeneralPage() {
         List<User> listOfUsers = userService.getAllUsers();
         return new ResponseEntity<>(listOfUsers, HttpStatus.OK);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<?> showUser(@PathVariable("id") Integer id) {
+    public ResponseEntity<User> showUser(@PathVariable("id") Integer id) {
         User user = userService.showUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/new")
-    public ResponseEntity<?> addUser(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> addUser(@RequestBody User user) {
         userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable("id") Integer id) {
+    public ResponseEntity<HttpStatus> editUser(@RequestBody User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id) {
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

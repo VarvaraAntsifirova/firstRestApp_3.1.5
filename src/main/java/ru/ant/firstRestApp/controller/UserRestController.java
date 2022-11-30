@@ -21,7 +21,7 @@ public class UserRestController {
     }
 
     @GetMapping("/userPage")
-    public ResponseEntity<?> showUser(Principal principal) {
+    public ResponseEntity<User> showUser(Principal principal) {
         User user = userService.findByUsername(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
